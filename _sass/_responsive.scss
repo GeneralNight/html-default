@@ -1,0 +1,28 @@
+$xl-device: 1140px;
+$lg-device: 960px;
+$md-device: 720px;
+$sm-device: 540px;
+
+
+@mixin d($device){
+    @if $device == xs{
+        @media (max-width: 575px) {
+            @content;
+        }
+    }
+    @if $device == sm{
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+    @if $device == md{
+        @media (max-width: 991px) {
+            @content;
+        }
+    }
+    @if $device == lg{
+        @media (max-width: 1199px) {
+            @content;
+        }
+    }
+}

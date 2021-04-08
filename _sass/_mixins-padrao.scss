@@ -1,0 +1,155 @@
+//Variaveis///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$browser-context: 16;
+$line-heitgh-context: 1.5;
+
+//functions///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//function converte font em
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+//function line-height
+@function line-height($pixels, $context: $line-heitgh-context){
+    @return #{$pixels/$context}em;
+
+}
+
+//Mixinsssss///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Transitions
+@mixin transition($value){
+    -webkit-transition: #{$value};
+    -moz-transition: #{$value};
+    -ms-transition: #{$value};
+    -o-transition: #{$value};
+    transition: #{$value};
+}
+//transform
+@mixin transform($value){
+    -moz-transform: #{$value};
+    -webkit-transform: #{$value};
+    -o-transform: #{$value};
+    -ms-transform: #{$value};
+    transform: #{$value};
+}
+//blur
+@mixin blur($value){
+    -webkit-filter: blur($value);
+    filter: blur($value);
+}
+//Calc
+@mixin calc($propriedadeCss, $values ){
+    #{$propriedadeCss}: -webkit-calc(#{$values});
+    #{$propriedadeCss}: -moz-calc(#{$values});
+    #{$propriedadeCss}: calc(#{$values});
+}
+//border-radius
+@mixin border-radius($value){
+    -webkit-border-radius: #{$value};
+    border-radius: #{$value};
+}
+//keyframs
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+//Triangulos
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5 );
+    } @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5 );
+    } @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    } @else if  $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
+//input palceholder
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+//border shadow
+@mixin border-shadow($value...){
+    $max: length($value);
+    $shadow: '';
+    
+    @for $i from 1 through $max{
+        $shadow: #{$shadow + nth($shadow, $i)};
+        
+        @if $i < $max {
+            $shadow: #{ $shadow + ", "};
+        }
+    }
+    
+    -webkit-box-shadow: $shadow;
+    box-shadow:         $shadow;
+}
+//text shadows
+@mixin text-shadows($value){
+    $max: length($value);
+    $shadow: '';
+    
+    @for $i from 1 through $max{
+        $shadow: #{$shadow + nth($shadow, $i)};
+        
+        @if $i < $max {
+            $shadow: #{ $shadow + ", "};
+        }
+    }
+    
+    text-shadow: $shadow;
+}
+//@visibilit
+@mixin visibility($value){
+    visibility: #{$value};
+    -webkit-backface-visibility: #{$value};
+    backface-visibility: #{$value};
+}
