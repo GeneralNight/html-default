@@ -1,3 +1,9 @@
+//bootstrap
+@import 'bootstrap/_bootstrap';
+
+//fontawesome
+@import 'fontawesome/scss/fontawesome';
+
 @import '_mixins-padrao';
 @import '_responsive';
-@import '_geral';
+@import '_geral'; 
