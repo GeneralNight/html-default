@@ -1,5 +1,5 @@
 //bootstrap
-@import 'bootstrap/bootstrap.scss';
+//@import 'bootstrap/bootstrap.scss';
 
 //reboot bootstrap
 //@import 'bootstrap/reboot.scss';
@@ -8,7 +8,10 @@
 //@import 'bootstrap/grid.scss';
 
 //fontawesome
-//@import 'fontawesome/scss/fontawesome';
+// @import 'fontawesome/scss/fontawesome';
+// @import 'fontawesome/scss/brands.scss';
+// @import 'fontawesome/scss/regular.scss';
+// @import 'fontawesome/scss/solid.scss';
 
 @import '_mixins-padrao';
 @import '_responsive';
