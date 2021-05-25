@@ -6,6 +6,7 @@ const browserSync = require("browser-sync").create();
 const concat = require("gulp-concat");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
+const imagemin = require("gulp-imagemin");
 
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -74,6 +75,23 @@ function browser() {
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
+// Minify images
+function imageMin() {
+  return gulp
+    .src("img/*")
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.mozjpeg({ quality: 30, progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+      ])
+    )
+    .pipe(gulp.dest("img/compact"));
+}
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 // Watch
 
 function watch() {
@@ -88,5 +106,6 @@ exports.gulpJS = gulpJS;
 exports.pluginsJs = pluginsJs;
 exports.browser = browser;
 exports.watch = watch;
+exports.imageMin = imageMin;
 
 exports.default = gulp.parallel(watch, browser, compliaSass, gulpJS, pluginsJs);

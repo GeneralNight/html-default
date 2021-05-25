@@ -8,6 +8,7 @@
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^3.2.1",
     "gulp-uglify": "^3.0.0",
     "jquery": "^3.3.1"
