@@ -7,6 +7,7 @@ const concat = require("gulp-concat");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
 const imagemin = require("gulp-imagemin");
+const webp = require("gulp-webp");
 
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -15,7 +16,7 @@ const imagemin = require("gulp-imagemin");
 
 function compliaSass() {
   return gulp
-    .src("css/scss/**/*.scss")
+    .src("assets/css/scss/**/*.scss")
     .pipe(sass({ outputStyle: "compressed" }))
     .pipe(
       autoprefixer({
@@ -23,7 +24,7 @@ function compliaSass() {
         cascade: false,
       })
     )
-    .pipe(gulp.dest("css/"))
+    .pipe(gulp.dest("assets/css/"))
     .pipe(browserSync.stream());
 }
 
@@ -34,7 +35,7 @@ function compliaSass() {
 
 function gulpJS() {
   return gulp
-    .src(["js/main/*.js"])
+    .src(["assets/js/main/*.js"])
     .pipe(concat("main.js"))
     .pipe(
       babel({
@@ -42,7 +43,7 @@ function gulpJS() {
       })
     )
     .pipe(uglify())
-    .pipe(gulp.dest("js/"))
+    .pipe(gulp.dest("assets/js/"))
     .pipe(browserSync.stream());
 }
 
@@ -55,7 +56,7 @@ function pluginsJs() {
   return gulp
     .src(["node_modules/jquery/dist/jquery.min.js"])
     .pipe(concat("plugins.js"))
-    .pipe(gulp.dest("js/"))
+    .pipe(gulp.dest("assets/js/"))
     .pipe(browserSync.stream());
 }
 
@@ -78,15 +79,30 @@ function browser() {
 // Minify images
 function imageMin() {
   return gulp
-    .src("img/*")
+    .src(["assets/img/*", "!assets/img/compact/", "!assets/img/webp/"])
     .pipe(
       imagemin([
         imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 30, progressive: true }),
+        imagemin.mozjpeg({ quality: 20, progressive: true }),
         imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+        }),
       ])
     )
-    .pipe(gulp.dest("img/compact"));
+    .pipe(gulp.dest("assets/img/compact/"));
+}
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// Images WEBP
+
+function webP() {
+  return gulp
+    .src(["assets/img/*", "!assets/img/webp/", "!assets/img/compact/"])
+    .pipe(webp())
+    .pipe(gulp.dest("assets/img/webp/"));
 }
 
 //////////////////////////////////////////////////
@@ -95,9 +111,9 @@ function imageMin() {
 // Watch
 
 function watch() {
-  gulp.watch("css/scss/**/*.scss", compliaSass);
-  gulp.watch(["js/main/**/*.js"], gulpJS);
-  gulp.watch(["js/plugins/**/*.js"], pluginsJs);
+  gulp.watch("assets/css/scss/**/*.scss", compliaSass);
+  gulp.watch(["assets/js/main/**/*.js"], gulpJS);
+  gulp.watch(["assets/js/plugins/**/*.js"], pluginsJs);
   gulp.watch(["*.html"]).on("change", browserSync.reload);
 }
 
@@ -107,5 +123,6 @@ exports.pluginsJs = pluginsJs;
 exports.browser = browser;
 exports.watch = watch;
 exports.imageMin = imageMin;
+exports.webP = webP;
 
 exports.default = gulp.parallel(watch, browser, compliaSass, gulpJS, pluginsJs);
