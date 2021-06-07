@@ -1,0 +1,62 @@
+Thiago Scomparin,
+16-997043939 | scompa@cantacom.com.br
+7 de Junho de 2021.
+Ainda estamos lutando contra o COVID.
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+Como utilizar o GULP?
+
+1 - Tenha instalado em seu PC o Node e NPM
+https://nodejs.org/en/download/
+Instale a versão LTS
+2 - Instale o Gulp CLI global utilizando o comando "npm i -g gulp-cli" em seu terminal.
+3 - Execute dentro do diretório raiz do projeto "npm install" em seu terminal, para instalar as dependências do projeto.
+4 - Agora execute dentro do diretório raiz do projeto o comando "gulp" em seu terminal. Pronto! :)
+
+A instalação do NPM e a do GULP CLI é feita somente uma vez.
+Nos próximos projetos não há a necessidade de executar esse processo.
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+Executando tarefas não assistidas.
+
+Algumas tarefas não são assistidas, elas podem ser executadas a qualquer momento.
+Para executá-las, execute dentro do diretório raiz do projeto utilizando seu terminal os seguintes comandos:
+
+##############
+imageMin
+Essa tarefa otimiza todas as imagens que se encontram dentro do diretório: "assets/img/", duplicando as imagens para o diretório: "assets/img/compact/".
+Após esse comando é necessário corrigir o caminho das imagens dentro do arquivo HTML.
+
+##############
+webP
+Essa tarefa converte todas as imagens que se encontram dentro do diretório: "assets/img/" para o formato webp, duplicando as imagens para o diretório: "assets/img/webp/".
+Após esse comando é necessário corrigir o caminho das imagens dentro do arquivo HTML.
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+Executando tarefas assistidas.
+
+Também é possível executar tarefas assistidas, uma vez que o comando "gulp" não esteja sendo executado. 
+Para executá-las, execute dentro do diretório raiz do projeto utilizando seu terminal os seguintes comandos:
+
+##############
+compliaSass
+Essa tarefa procura todos os arquivos que estão sendo importados dentro do arquivo: "assets/css/scss/style.scss", salvando dentro do arquivo: "assets/css/style.css".
+
+##############
+gulpJS
+Essa tarefa procura todos os arquivos JS que se encontram dentro do diretório: "assets/js/main/", salvando dentro do arquivo: "assets/js/main.js".
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+Atenções!
+
+*** Todos os arquivos JS, na construção devem estar dentro do scopo do arquivo, para isso utilize chaves. Exemplo: "{ seu código aqui }"
+
+
