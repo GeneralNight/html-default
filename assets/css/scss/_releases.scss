@@ -1,0 +1,61 @@
+._sec-releases {
+    padding: 50px 0;
+    background-color: #062147;
+
+    .sec-release-title {
+        font-size: 2.25rem;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    .release-item {
+        color: white;
+        padding: 50px 0;
+
+        &:nth-of-type(2n) {
+            border-top: 2px solid;
+            border-bottom: 2px solid;
+            border-color: hsla(163, 30%, 53%, 0.6);
+        }
+
+        .release-thumb {
+            img {
+                width: 100%;
+                border-radius: 5px;
+            }
+                
+            height: 220px;
+            overflow-Y: hidden;  
+        }
+
+        .release-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #62ab95
+        }
+
+        .release-text {
+            text-overflow: clip; 
+        }
+
+        .release-button {
+            border-radius: 16px;
+            background-color: #62ab95;
+            color: #285044;
+            border:none;
+            padding: 5px 15px;
+            font-weight: 700;
+            float: right;
+            margin-top: 10px;
+            transition: .2s;
+            &:hover {
+                filter: brightness(90%);
+            }
+        }
+
+        
+    }
+    
+   
+    
+}

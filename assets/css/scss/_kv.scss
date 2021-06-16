@@ -1,0 +1,24 @@
+._sec-kv {
+    color:white;
+
+    img {
+        max-width: 100%;
+    }
+
+    .containerAll {
+        background-image: linear-gradient(-90deg,#3b3f47,#5c85ef);        
+
+        .container {
+            max-width: 720px;
+        }
+
+        .kvText {
+            text-align: center;
+            padding: 50px 0;
+            line-height: 1.8rem;           
+        }
+    }
+
+    
+
+}

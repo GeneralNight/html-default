@@ -111,7 +111,7 @@ function webP() {
 // Watch
 
 function watch() {
-  gulp.watch("assets/css/scss/*.scss", compliaSass);
+  gulp.watch("assets/css/scss/**/*.scss", compliaSass);
   gulp.watch(["assets/js/main/**/*.js"], gulpJS);
   gulp.watch(["assets/js/plugins/**/*.js"], pluginsJs);
   gulp.watch(["*.html"]).on("change", browserSync.reload);
