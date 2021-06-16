@@ -16,7 +16,7 @@ const webp = require("gulp-webp");
 
 function compliaSass() {
   return gulp
-    .src("assets/css/scss/style.scss")
+    .src("assets/css/scss/*.scss")
     .pipe(sass({ outputStyle: "compressed" }))
     .pipe(
       autoprefixer({
@@ -111,7 +111,7 @@ function webP() {
 // Watch
 
 function watch() {
-  gulp.watch("assets/css/scss/style.scss", compliaSass);
+  gulp.watch("assets/css/scss/*.scss", compliaSass);
   gulp.watch(["assets/js/main/**/*.js"], gulpJS);
   gulp.watch(["assets/js/plugins/**/*.js"], pluginsJs);
   gulp.watch(["*.html"]).on("change", browserSync.reload);
